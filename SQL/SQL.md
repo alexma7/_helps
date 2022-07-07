@@ -44,3 +44,6 @@ CREATE NONCLUSTERED INDEX IX_ ON Sales.table_name (SalesQuota, SalesYTD);
 ALTER TABLE dbo.table 
 ADD field_id INT IDENTITY(1,1)
 -- 
+```
+
+
