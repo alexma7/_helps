@@ -11,7 +11,7 @@
 6. [TRIGGER](#TRIGGER)
 6. [TRY, CATCH, @@TRANCOUNT, THROW](#TRY,-CATCH,-@@TRANCOUNT,-THROW)
 6. [Обобщенное табличное выражение "CTE" - WITH](#WITH)
-6. [ROW_NUMBER](#ROW_NUMBER)
+6. [Оконные функции](#ROW_NUMBER)
 6. [ERROR, INTO, OUTPUT, INSERTED](#ERROR,-INTO,-OUTPUT,-INSERTED)
 6. [CASE, IIF, ISNUUL, COALESCE](#CASE)
 0. [Математические функции: ABS, CEILING, FLOOR, SQRT, SQUARE, POWER, LOG](#MATH_FUNC)
@@ -282,7 +282,7 @@ END CATCH
 			--Удалим первые 2 символа
 	SET @list_user_email = STUFF( @list_user_email, 1, 2, '' )
 ```
-## ОКОННЫЕ ФУНКЦИИИ <a id="ROW_NUMBER"></a>
+## Оконные функции <a id="ROW_NUMBER"></a>
 
 Создает виртуальное окно, в котором можно 
 ```SQL
@@ -541,7 +541,11 @@ CREATE NONCLUSTERED INDEX IX_non_clustered ON goods
 
 -- При добавлении новых индексов, можно не удалять предыдущие индексы, а в конце прописать:
 WITH (DROP_EXISTING = ON) -- удаляет индекс перед созданием, если такой существует
---
+
+-- Еще пример создания индексов
+CREATE CLUSTERED INDEX clustered_date_eqmt_id ON dbo.table_name (date_time_begin, eqmt_id, id);
+CREATE NONCLUSTERED INDEX IX_ ON Sales.table_name (SalesQuota, SalesYTD);
+
 
 ```
 
@@ -594,7 +598,12 @@ WHERE в условиях поиска равно (=), больше (>), мен�
 ```SQL
 ALTER TABLE table1 ALTER COLUMN field1 INT NOT NULL; -- Устанавливаем ограничение на добавление NULL
 
-PRIMARY KEY
+
+## Добавить столбцы, редактировать таблицу
+```SQL	
+-- добавить счетчик в рабочуюю таблицу
+ALTER TABLE dbo.table 
+ADD field_id INT IDENTITY(1,1)
 ```
 
 # SEQUENCE последовательность <a id="SEQUENCE"></a>
