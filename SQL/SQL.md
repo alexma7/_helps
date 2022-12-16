@@ -29,6 +29,7 @@
 0. [Пользовательские функции](#CREATE_FUNCTION)
 0. [APPLY](#APPLY)
 0. [Псевдонимы типа данных](#SYNONIM_DATA_TYPE)
+0. [OPENQUERY](#OPENQUERY)
 0. [](#)
 
 
@@ -931,11 +932,20 @@ VALUES 	 ('print', 5000)
 EXEC test_procedure @text_comment, ,@test_table
 ```
 
+
+	
+# OPENQUERY <a id="OPENQUERY"></a>
+OPENQUERY - используется для вызова удаленных запросов. Можно сразу закинуть во временную таблцу возвращаемые данные
+```SQL
+	SELECT * INTO #tbl FROM  OPENQUERY ( server,'SELECT * FROM base.dbo.table' ) 
+```
+
+	
+
+	
 # ИМЯ <a id="ИМЯ"></a>
 ```SQL 
 ```
-
-
 
 
 
